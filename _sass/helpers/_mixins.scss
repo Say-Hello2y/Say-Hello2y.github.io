@@ -21,7 +21,10 @@
 }
 
 @mixin ff--code {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Menlo', monospace;
+    padding: .1em .2em;
+    border-radius: 3px;
+    font-size: 90%;
 }
 
 // Font sizing

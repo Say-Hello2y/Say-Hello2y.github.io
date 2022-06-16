@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Swift: To Escape or Not to Escape</title><meta name="description" content="I know that @ sign is kind of weird because you don’t see those often in Swift code but turns out, the concept behind it is not too hard to…"><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Swift: To Escape or Not to Escape</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+I know that @ sign is kind of weird because you don’t see those often in Swift code but turns out, the concept behind it is not too hard to…
+</section>
+<section data-field="body" class="e-content">
+<section name="1f4c" class="section section--body section--first"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="89b8" id="89b8" class="graf graf--h3 graf--leading graf--title">Swift: To Escape or Not to Escape</h3></div><div class="section-inner sectionLayout--fullWidth"><figure name="edf9" id="edf9" class="graf graf--figure graf--layoutFillWidth graf-after--h3"><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill" style="padding-bottom: 65.60000000000001%;"></div><img class="graf-image" data-image-id="1*55PHG76Dh0EJXqIEWwlQ7w.jpeg" data-width="1600" data-height="1049" src="https://cdn-images-1.medium.com/max/2000/1*55PHG76Dh0EJXqIEWwlQ7w.jpeg"></div><figcaption class="imageCaption">How the f*** did he escape?</figcaption></figure></div><div class="section-inner sectionLayout--insetColumn"><p name="62f3" id="62f3" class="graf graf--p graf-after--figure">I know that @ sign is kind of weird because you don’t see those often in Swift code but turns out, the concept behind it is not too hard to understand.</p><h4 name="5bcd" id="5bcd" class="graf graf--h4 graf-after--p">Definition</h4><blockquote name="9918" id="9918" class="graf graf--pullquote graf-after--h4"><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html" data-href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html" class="markup--anchor markup--pullquote-anchor" rel="noopener" target="_blank"><strong class="markup--strong markup--pullquote-strong">@escaping</strong></a> keyword allows a closure to be called after the function it was passed to has returned. In other words, the closure has escaped the scope of the function it has been passed into.</blockquote><h4 name="e585" id="e585" class="graf graf--h4 graf-after--pullquote">Why should I care?</h4><p name="a971" id="a971" class="graf graf--p graf-after--h4">In many asynchronous logics, escaping is a must since a function may need to be stored off somewhere in ordered to be fired off in the proper moment. Also, we may need to store a closure in a property so that we can call that said property after a user taps on a button!</p><p name="5602" id="5602" class="graf graf--p graf-after--p graf--trailing">Enough talking! Let’s look at some examples…</p></div></div></section><section name="35a4" class="section section--body"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><p name="bdc7" id="bdc7" class="graf graf--p graf--leading">Before we start, here is a simple rule with closures in Swift 3</p><blockquote name="62a0" id="62a0" class="graf graf--pullquote graf-after--p">1. Closures in function parameter position are non-escaping by default<br>2. All other closures are escaping (Array, Optional)</blockquote><h3 name="7f51" id="7f51" class="graf graf--h3 graf-after--pullquote">Non-escaping is the default</h3><p name="b205" id="b205" class="graf graf--p graf-after--h3">Before Swift 3, @escaping used to be the default and need to write @noescaping to override it. However, you could imagine all the reference cycles that this default setting would introduce. So starting from Swift 3, all closures are non-escaping by default to ensure safety. So in order to mark something as escaping, we need to put the @escping keyword.</p><blockquote name="7115" id="7115" class="graf graf--pullquote graf-after--p">When you see one, you should take it as a warning and look closely at how that escaping function will be used in the future.</blockquote><h3 name="6b3d" id="6b3d" class="graf graf--h3 graf-after--pullquote">Function Variables</h3><p name="261e" id="261e" class="graf graf--p graf-after--h3">Here, we can see that the first version of <em class="markup--em markup--p-em">createResource </em>is trying to store off the argument <em class="markup--em markup--p-em">parseFunc</em> to a new Resource struct. But since variables of function types are always escaping, we need to mark it as so.</p><figure name="46ac" id="46ac" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/mkchoi212/cda519d7861245dc41c3a5cd3de0dc5b.js"></script></figure><h3 name="6fde" id="6fde" class="graf graf--h3 graf-after--figure">Optional Closures</h3><p name="cffe" id="cffe" class="graf graf--p graf-after--h3">Well, optional closures are escaping as well. Swift team knows about this and said <a href="https://bugs.swift.org/browse/SR-2444" data-href="https://bugs.swift.org/browse/SR-2444" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">they will fix this in Swift 4</a>. But for now, this is the reality</p><figure name="2933" id="2933" class="graf graf--figure graf--iframe graf-after--p"><script src="https://gist.github.com/mkchoi212/a9696a49a1ec1f790f94649b5788b13c.js"></script></figure><h3 name="2d67" id="2d67" class="graf graf--h3 graf-after--figure">Typealiases are always escaping (FIXED!)</h3><p name="f04e" id="f04e" class="graf graf--p graf-after--h3 graf--trailing">In the past, the compiler did not pick up the default @noescape for a closure’s typealias. But this has <a href="https://bugs.swift.org/browse/SR-2316" data-href="https://bugs.swift.org/browse/SR-2316" class="markup--anchor markup--p-anchor" rel="noopener" target="_blank">now been fixed!</a></p></div></div></section><section name="f28c" class="section section--body section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><figure name="516e" id="516e" class="graf graf--figure graf--layoutOutsetLeft graf--leading"><div class="aspectRatioPlaceholder is-locked" style="max-width: 300px; max-height: 250px;"><div class="aspectRatioPlaceholder-fill" style="padding-bottom: 83.3%;"></div><img class="graf-image" data-image-id="1*c77zpqH-8FkmGEskqjkNPA.gif" data-width="300" data-height="250" src="https://cdn-images-1.medium.com/max/1200/1*c77zpqH-8FkmGEskqjkNPA.gif"></div></figure><p name="5da5" id="5da5" class="graf graf--p graf-after--figure graf--leading graf--trailing">Hope this cleared up the definition of @escaping for you. One thing I hope you got away from this blog post is that the next time you see a @escaping, you should be questioning what the code is doing and go</p></div></div></section>
+</section>
+<footer><p class="p-tags">Tagged in <a href="https://medium.com/tag/swift" class="p-tag">Swift</a>, <a href="https://medium.com/tag/ios" class="p-tag">iOS</a>, <a href="https://medium.com/tag/closure" class="p-tag">Closures</a></p><p>By <a href="https://medium.com/@mikejschoi" class="p-author h-card">Mike JS Choi</a> on <a href="https://medium.com/p/27c56e0a09c2"><time class="dt-published" datetime="2017-01-29T04:23:22.202Z">January 29, 2017</time></a>.</p><p>Exported from <a href="https://medium.com">Medium</a> on June 28, 2017.</p></footer></article>
+
+</body></html>

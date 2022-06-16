@@ -1,26 +1,33 @@
 # Site settings
-title: "Paper Jekyll Theme"
+title: "0xDEADBEEF"
 description: > 
-  Write a description of your website here.
+    Hi, I'm Mike. Here, I mainly write about Swift, Go, and random computer musings.  
 
-author: Johnny Appleseed
-email: johnny@appleseed.com
-twitter_username: _HairForceOne
-github_username: mkchoi212
+author: Mike JS. Choi
+email: mkchoi212@icloud.com
+baseurl: ""
+url: "https://www.deadbeef.me"
+twitter_username: bananamlkshake2
+github_username:  mkchoi212
+disqus_id: deadbeef-me
+google_analytics_id: UA-101802837-1
 
-baseurl: "/paper-jekyll-theme" # the subpath of your site, e.g. /blog
-url: "https://deadbeef.me" # the base hostname & protocol for your site
+# SEO
+gem:
+  - jekyll-seo-tag
 
-google_analytics_id: UA-1111111111-1
-disqus_id:
+social:
+  name: Mike JS. Choi
+  links:
+    - https://github.com/mkchoi212
+    - https://twitter.com/bananamlkshake2
+    - https://www.linkedin.com/in/mikejschoi/
 
 # Build settings
 include: [_pages]
 markdown: kramdown
-permalink: /:year/:month/:title.html
-
+permalink: /:year/:month/:title
 sass:
     style: compressed
 
 exclude: [vendor]
-

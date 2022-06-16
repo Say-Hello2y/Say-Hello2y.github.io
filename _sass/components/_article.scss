@@ -62,16 +62,18 @@
         @include fs--body;
     }
 
-    strong {
-        color: $c-base__02;
-        font-weight: 700;
+    strong, b {
+        font-weight: bold;
     }
 
     blockquote {
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 1.8rem; // 18px
-        border-left: 5px solid #ccc;
+        font-weight: 400;
+				padding: 0 0 0 1.4rem;
+        margin: 0 2rem 1rem 0;
+        border-left: .2em solid #ccc;
+				p {
+					color: gray;
+				}
     }
 
     ul,

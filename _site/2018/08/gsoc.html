@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Google Summer of Code Final Report Part 1 - 0xDEADBEEF</title>
+    <meta name="description" content="  Premise  VLCKit TestSuite          1. Add singular form for verbose time description      2. Setup testing schemes in Xcode      3. Tests: VLCTime      4. ...">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,900,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/2018/08/gsoc">
+    <link rel="alternate" type="application/rss+xml" title="0xDEADBEEF" href="http://localhost:4000/feed.xml">
+
+    <script>
+    window['_h_debug'] = true;
+    window['_h_script'] = 'https://static.highlight.run/index.js';
+    window['_h_org'] = 19;
+    var a0a=['ned','exp','fun','_h_','ule','__e','add','per','_ob','tlo','nds','men','ate','Mod','/fi','rib','scr','ute','loa','./f','rea','ini','cal','aul','ine','und','yTa','ad_','tsB','cre','nti','gNa','ort','ava','str','ing','get','d.j','Ele','bin','liz','org','ght','hig','tia','toS','tri','def','hea','hli','tot','obj','set','Own','ect','t/j','end','ist','ipt','Chi','has','cti','ype','ide','dul','ngT','typ','sMo','irs','Mil','Pro','src','eco'];(function(a,b){var c=function(d){while(--d){a['push'](a['shift']());}};c(++b);}(a0a,0x1b1));var a0b=function(a,b){a=a-0x0;var c=a0a[a];return c;};(function webpackUniversalModuleDefinition(a,b){var i=a0b;if(typeof exports===i('0x38')+i('0x3b')&&typeof module===i('0x38')+'ect')module['exp'+i('0x25')+'s']=b();else{if(typeof define===i('0x7')+i('0x42')+'on'&&define['amd'])define([],b);else{if(typeof exports===i('0x38')+'ect')exports['$']=b();else a['$']=b();}}}(window,function(){return function(a){var q=a0b,b={};function c(d){var j=a0b;if(b[d])return b[d][j('0x6')+j('0x25')+'s'];var e=b[d]={'i':d,'l':![],'exports':{}};return a[d][j('0x1b')+'l'](e[j('0x6')+j('0x25')+'s'],e,e['exp'+j('0x25')+'s'],c),e['l']=!![],e[j('0x6')+j('0x25')+'s'];}return c['m']=a,c['c']=b,c['d']=function(d,e,f){var k=a0b;!c['o'](d,e)&&Object[k('0x34')+k('0x1d')+'Pro'+'per'+'ty'](d,e,{'enumerable':!![],'get':f});},c['r']=function(d){var l=a0b;typeof Symbol!==l('0x1e')+'efi'+l('0x5')&&Symbol['toS'+l('0x33')+l('0x46')+'ag']&&Object['def'+l('0x1d')+'Pro'+l('0xc')+'ty'](d,Symbol[l('0x32')+l('0x33')+l('0x46')+'ag'],{'value':l('0x12')+l('0x9')}),Object['def'+'ine'+l('0x2')+l('0xc')+'ty'](d,l('0xa')+l('0x48')+l('0x45')+'e',{'value':!![]});},c['t']=function(d,e){var m=a0b;if(e&0x1)d=c(d);if(e&0x8)return d;if(e&0x4&&typeof d===m('0x38')+m('0x3b')&&d&&d[m('0xa')+m('0x48')+'dul'+'e'])return d;var f=Object['cre'+'ate'](null);c['r'](f),Object[m('0x34')+m('0x1d')+m('0x2')+m('0xc')+'ty'](f,'def'+m('0x1c')+'t',{'enumerable':!![],'value':d});if(e&0x2&&typeof d!=m('0x27')+m('0x28'))for(var g in d)c['d'](f,g,function(h){return d[h];}[m('0x2c')+'d'](null,g));return f;},c['n']=function(d){var n=a0b,e=d&&d[n('0xa')+n('0x48')+n('0x45')+'e']?function f(){var o=n;return d[o('0x34')+o('0x1c')+'t'];}:function g(){return d;};return c['d'](e,'a',e),e;},c['o']=function(d,e){var p=a0b;return Object['pro'+p('0x37')+p('0x43')][p('0x41')+p('0x3a')+p('0x2')+'per'+'ty'][p('0x1b')+'l'](d,e);},c['p']='',c(c['s']=q('0x18')+q('0x0')+q('0xe')+q('0x20')+q('0x3')+q('0x13')+'rst'+'loa'+q('0x2a')+'s');}({'./firstload_src/firstload.js':function(a,b){var r=a0b,c=document[r('0x22')+r('0x11')+r('0x2b')+r('0x10')+'t'](r('0x15')+'ipt');c[r('0x39')+'Att'+'rib'+r('0x16')]('src',window['_h_'+'scr'+r('0x3f')]+'?'+new Date()[r('0x29')+r('0x1')+'lis'+r('0x4')+r('0xf')]()),c['set'+'Att'+r('0x14')+'ute'](r('0x47')+'e','tex'+r('0x3c')+r('0x26')+r('0x15')+r('0x3f')),document[r('0x29')+'Ele'+'men'+r('0x21')+r('0x1f')+r('0x24')+'me'](r('0x35')+'d')[0x0]['app'+r('0x3d')+r('0x40')+'ld'](c),c[r('0xb')+'Eve'+'ntL'+r('0x3e')+'ene'+'r'](r('0x17')+'d',()=>{var s=r;window['hig'+'hli'+s('0x2f')+s('0xd')+'j']=new Highlight(window[s('0x8')+'deb'+'ug']),highlight_obj[s('0x1a')+s('0x31')+s('0x2d')+'e'](window[s('0x8')+s('0x2e')]);}),window['H']={},window['H'][r('0x44')+'nti'+'fy']=(d,e)=>{var f=setInterval(function(){var t=a0b;window[t('0x30')+'hli'+t('0x2f')+'_ob'+'j']&&window[t('0x30')+t('0x36')+t('0x2f')+t('0xd')+'j'][t('0x19')+'dy']&&(clearInterval(f),window['hig'+t('0x36')+t('0x2f')+t('0xd')+'j'][t('0x44')+t('0x23')+'fy'](d,e));},0xc8);};}});}));
+    </script>
+    
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Google Summer of Code Final Report Part 1 | 0xDEADBEEF</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Google Summer of Code Final Report Part 1" />
+<meta name="author" content="Mike JS. Choi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="VLCKit" />
+<meta property="og:description" content="VLCKit" />
+<link rel="canonical" href="http://localhost:4000/2018/08/gsoc" />
+<meta property="og:url" content="http://localhost:4000/2018/08/gsoc" />
+<meta property="og:site_name" content="0xDEADBEEF" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-05T05:49:23+08:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2018/08/gsoc","author":{"@type":"Person","name":"Mike JS. Choi"},"headline":"Google Summer of Code Final Report Part 1","dateModified":"2018-08-05T05:49:23+08:00","datePublished":"2018-08-05T05:49:23+08:00","description":"VLCKit","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2018/08/gsoc"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+    <body>
+        <main class="u-container">
+        <div class="c-page">
+    <header class="c-page__header">
+    <h1><code>0xDEADBEEF</code></h1>
+
+    
+    <p>
+        <a href="/">Home</a><span
+          class="u-separate"></span> <a href="/projects/">Projects</a><span class="u-separate"></span> <a href="/about/">About</a><span class="u-separate"></span><a href="/feed.xml">RSS</a>
+    </p>
+</header>
+
+    <div class="c-page__main">
+    <article class="c-article">
+    <header class="c-article__header">
+        <h1 class="c-article__title">Google Summer of Code Final Report Part 1</h1>
+        <p class="c-article__time"><time datetime="2018-08-05T05:49:23+08:00" itemprop="datePublished">Aug 5, 2018</time></p>
+    </header>
+    
+    <!-- Post Tags -->
+    <ul class="c-tags">
+    
+      <li class="c-tag">oss</li>
+    
+    </ul>
+
+    <div class="c-article__main">
+        <ul>
+  <li><a href="#premise">Premise</a></li>
+  <li><a href="#vlckit-testsuite">VLCKit TestSuite</a>
+    <ul>
+      <li><a href="#1-add-singular-form-for-verbose-time-description">1. Add singular form for verbose time description</a></li>
+      <li><a href="#2-setup-testing-schemes-in-xcode">2. Setup testing schemes in Xcode</a></li>
+      <li><a href="#3-tests-vlctime">3. Tests: VLCTime</a></li>
+      <li><a href="#4-create-rakefile">4. Create Rakefile</a></li>
+      <li><a href="#5-setup-circleci">5. Setup CircleCI</a></li>
+      <li><a href="#6-enable-code-coverage-via-xccov">6. Enable code coverage via xccov</a></li>
+      <li><a href="#7-setup-testing-schemes-for-vlckit">7. Setup testing schemes for VLCKit</a></li>
+      <li><a href="#8-setup-testing-schemes-for-tvvlckittests">8. Setup testing schemes for TVVLCKitTests</a></li>
+      <li><a href="#9-tests-vlcmedia">9. Tests: VLCMedia</a></li>
+      <li><a href="#10-tests-add-video-samples">10. Tests: Add video samples</a></li>
+      <li><a href="#11-tests-vlcaudio">11. Tests: VLCAudio</a></li>
+      <li><a href="#12-project-organization">12. Project organization</a></li>
+      <li><a href="#13-readme-reformat">13. README: Reformat</a></li>
+      <li><a href="#14-readme-link-build-status-badge-with-master">14. README: Link build status badge with master</a></li>
+      <li><a href="#15-vlclibrary-debuglogging-status-closes-186">15. VLCLibrary: debugLogging status (closes #186)</a></li>
+      <li><a href="#16-tests-vlclibrary">16. Tests: VLCLibrary</a></li>
+      <li><a href="#17-vlcmediathumbnailer-upate-dimensions-fixes-183">17. VLCMediaThumbnailer: Update dimensions (fixes #183)</a></li>
+      <li><a href="#18-vlcmedialist-removemediaat-closes-182">18. VLCMediaList: removeMediaAt (closes #182)</a></li>
+      <li><a href="#19-tests-vlcmedialist">19. Tests: VLCMediaList</a></li>
+      <li><a href="#20-tests-vlcmediathumbnailer">20. Tests: VLCMediaThumbnailer</a></li>
+    </ul>
+  </li>
+  <li><a href="#moving-forward">Moving forward</a></li>
+</ul>
+
+<p>This summer, I participated in <a href="https://summerofcode.withgoogle.com/about/">Google Summer of Code</a> with <a href="https://www.videolan.org/">VideoLAN</a>. My personal project was to establish the much needed test-suite for <a href="https://github.com/videolan/vlckit">VLCKit</a>, a generic multimedia library for audio or video playback needs on macOS, iOS and tvOS.</p>
+
+<p>Before diving into the post, I would like to let you know that I will explain each pull request and why the said action was taken. This way, if you - the coherant reader - come by similar problems, you will know exactly what to do :D</p>
+
+<h1 id="premise">Premise</h1>
+
+<p>Before the project started, VLCKit was already available to the public via source code and <a href="https://cocoapods.org/pods/VLCKit">Cocoapods</a>. However, even with over 80,000 downloads, and over 5,000 activate applications relying on it, the repo lacked a test-suite. My GSoC project aimed to solve this by integrating a test-suite along with a continuous integration workflow that would act as a safety net for any potential breakages.</p>
+
+<p>Before listing all of my contributions, I would like to note that while my main task was to establish the said test-suite, I also decided to contribute to other projects within VideoLAN during the coding period. You can read about them in the <a href="http://localhost:4000/2018/08/gsoc-2">second part</a> of the series.</p>
+
+<h1 id="vlckit-testsuite">VLCKit TestSuite</h1>
+
+<p>Below is a list of pull requests that have been made throughout the GSoC coding period.</p>
+
+<h4 id="1-add-singular-form-for-verbose-time-description">1. <a href="https://github.com/videolan/vlckit/pull/10">Add singular form for verbose time description</a></h4>
+
+<p>To be honest, the big code base kinda scared me in the beginning. To overcome this, I went and looked for the <strong>easiest, simplest looking class.</strong> After a bit of searching, I found <code class="highlighter-rouge">VLCTime.h</code>, an <code class="highlighter-rouge">NSObject</code> that represented the…. time. While browsing through the code, I found that its <code class="highlighter-rouge">verboseTimeDescription:</code> function returned <strong>1 minutes 20 seconds</strong> instead of <strong>1 minute 20 seconds</strong>. It was really small but I had found my first bug 🎉</p>
+
+<p>With <a href="https://twitter.com/feepk">@felix</a>’s suggestion, I used Apple’s date component API. And voilà! My first PR was merged.</p>
+
+<h4 id="2-setup-testing-schemes-in-xcode">2. <a href="https://github.com/videolan/vlckit/pull/11">Setup testing schemes in Xcode</a></h4>
+
+<p>This was a simple PR setting up the testing scheme within Xcode. But the big lesson in this PR is this,</p>
+
+<blockquote>
+  <p>A pull request should only <strong>deal with ONE thing and ONE thing only.</strong></p>
+</blockquote>
+
+<h4 id="3-tests-vlctime">3. <a href="https://github.com/videolan/vlckit/pull/12">Tests: VLCTime</a></h4>
+
+<p>This was the first PR that added tests to the codebase. After much discussion with my mentors, all tests written from this point followed the <a href="http://softwaretestingfundamentals.com/black-box-testing/">blackbox</a> method of testing.</p>
+
+<h4 id="4-create-rakefile">4. <a href="https://github.com/videolan/vlckit/pull/14">Create Rakefile</a></h4>
+
+<p>I wanted a script to expedite the process of building and testing. After having used <a href="http://fastlane.tools">fastlane</a> not long ago in VLC-iOS, my mind went immediately to it. But considering fastlane has something like 20 dependencies, <a href="https://twitter.com/_Caro_N">@caro</a> thought that it would be too much when we were only going to use one of fastlane’s many features.</p>
+
+<p>I agreed and began to look for <em>lighter</em> solutions. I eventually came across <a href="https://github.com/PSPDFKit/PSPDFKitSwift">PSPDFKitSwift</a> made by the good folks at PSPDFKit. In the repo, PSPDFKit uses a <a href="https://github.com/PSPDFKit/PSPDFKitSwift/blob/master/Rakefile">Rakefile</a> to easily compile, and release the framework.</p>
+
+<p>Inspired by this, I basically copied what they did… but with additional tasks for testing.</p>
+
+<blockquote>
+  <p>Lesson here? Never be satisfied with option #1. Look at other options and you will probably be surprised :D</p>
+</blockquote>
+
+<h4 id="5-setup-circleci">5. <a href="https://github.com/videolan/vlckit/pull/15">Setup CircleCI</a></h4>
+
+<p>This was relatively easy thanks to CircleCI’s thorough documentation. And with the <code class="highlighter-rouge">Rakefile</code> from the previous PR, <code class="highlighter-rouge">.circleci.yml</code> ended up looking clean.</p>
+
+<h4 id="6-enable-code-coverage-via-xccov">6. <a href="https://github.com/videolan/vlckit/pull/16">Enable code coverage via xccov</a></h4>
+
+<p>I previously had used code coverage services like <a href="https://codecov.io">codecov</a> and <a href="http://coveralls.io">coveralls</a>. So, I suggested VLCKit use one of these services. But after <a href="https://twitter.com/_Caro_N">@caro</a> mentioned that Apple had recently released <code class="highlighter-rouge">xccov</code>, a code coverage report generator, I ended up integrating it in the aforementioned <code class="highlighter-rouge">Rakefile</code>.</p>
+
+<p>While xccov is very easy to integrate, its output is <strong>too hard to read and not visually pleasing.</strong></p>
+
+<p>To solve this, I decided to create a xccov prettifier called <a href="https://github.com/mkchoi212/xcperfect">xcperfect</a>. Hopefully it can become a part of VLCKit once it becomes stable enough.</p>
+
+<h4 id="7-setup-testing-schemes-for-vlckit">7. <a href="https://github.com/videolan/vlckit/pull/17">Setup testing schemes for VLCKit</a></h4>
+
+<p>Simple PR to setup Xcode schemes 😵</p>
+
+<h4 id="8-setup-testing-schemes-for-tvvlckittests">8. <a href="https://github.com/videolan/vlckit/pull/18">Setup testing schemes for TVVLCKitTests</a></h4>
+
+<p>Once more 🙃</p>
+
+<h4 id="9-tests-vlcmedia">9. <a href="https://github.com/videolan/vlckit/pull/19">Tests: VLCMedia</a></h4>
+
+<p>The test here cover simple in &amp; out style function with no internal mutations. The tests may look un-eventful, but <strong>make sure you cover all the edge cases. 😎</strong></p>
+
+<h4 id="10-tests-add-video-samples">10. <a href="https://github.com/videolan/vlckit/pull/23">Tests: Add video samples</a></h4>
+
+<p>The question here was,</p>
+
+<blockquote>
+  <p>“How do we store test video assets in the repo?”</p>
+</blockquote>
+
+<p>I will start by listing some of the options we considered and their pros &amp; cons.</p>
+
+<ol>
+  <li>Just store it in the repo
+    <ul>
+      <li>Pro: Easy</li>
+      <li>Con: Assets might get big and bloat the repo</li>
+    </ul>
+  </li>
+  <li>Git-LFS
+    <ul>
+      <li>Pro: Easy to setup and buying into Git’s infra</li>
+      <li>Con: Github requires you to pay 💰</li>
+    </ul>
+  </li>
+  <li>Git-Submodules
+    <ul>
+      <li>Pro: Easy to setup and buying into Git’s infra</li>
+      <li>Con: <em>“If you use git-submodules, you’ll have a bad time”</em></li>
+    </ul>
+  </li>
+  <li>Upload to server and download when building
+    <ul>
+      <li>Pro: Large reliable storage is available for FREE</li>
+      <li>Con: Relies on network to start initial test</li>
+    </ul>
+  </li>
+</ol>
+
+<p>And after consulting Twitter <a href="https://twitter.com/Bananamlkshake2/status/1022417680928653312">here</a> and <a href="https://twitter.com/_Caro_N/status/1016293967787372544">here</a>, we ended up with a combination of few options</p>
+
+<blockquote>
+  <p>Create a new repo called <strong>TestAssets</strong> and clone it via a Shell script during Xcode project’s initial build via RunBuildPhase.</p>
+</blockquote>
+
+<h4 id="11-tests-vlcaudio">11. <a href="https://github.com/videolan/vlckit/pull/24">Tests: VLCAudio</a></h4>
+
+<p><code class="highlighter-rouge">VLCAudio</code> contains numerous internal state mutations. After initial doubts of whether blackbox testing was going work, this pull request proved that blackbox testing is going to work just fine.</p>
+
+<h4 id="12-project-organization">12. <a href="https://github.com/videolan/vlckit/pull/25">Project organization</a></h4>
+
+<p>The most satisfying thing ever is when git tells you…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+31 **-980**
+</code></pre></div></div>
+
+<h4 id="13-readme-reformat">13. <a href="https://github.com/videolan/vlckit/pull/26">README: Reformat</a></h4>
+
+<p>As <a href="https://twitter.com/_Caro_N">@caro</a> would say,</p>
+
+<blockquote>
+  <p>“People judge repositories by its… cover”.</p>
+</blockquote>
+
+<p>Inspired by Swift’s Github repo, the README went through a major makeover.</p>
+
+<h4 id="14-readme-link-build-status-badge-with-master">14. <a href="https://github.com/videolan/vlckit/pull/29">README: Link build status badge with master</a></h4>
+
+<p>To make the README even more attractive, a table with various status badges was added. This allows the users to immediately know the status of the repo along with the latest version of the framework.</p>
+
+<h4 id="15-vlclibrary-debuglogging-status-closes-186">15. <a href="https://github.com/videolan/vlckit/pull/30">VLCLibrary: debugLogging status (closes #186)</a></h4>
+
+<p>When the user sets the <code class="highlighter-rouge">debugLoggingLevel/Status</code> of their <code class="highlighter-rouge">VLCLibrary</code> instance, no information was being saved nor checked. This PR fixed exactly that.</p>
+
+<h4 id="16-tests-vlclibrary">16. <a href="https://github.com/videolan/vlckit/pull/32">Tests: VLCLibrary</a></h4>
+
+<p>This implements tests for <code class="highlighter-rouge">VLCLibrary</code> with the previous PR merged in. Tests here are pretty straightforward however, there are couple of functions that could not tested due their dependency on network calls.</p>
+
+<h4 id="17-vlcmediathumbnailer-update-dimensions-fixes-183">17. <a href="https://github.com/videolan/vlckit/pull/33">VLCMediaThumbnailer: Update dimensions (fixes #183)</a></h4>
+
+<p>This PR fixes a bug where the media thumbnail’s dimensions are not updated internally.</p>
+
+<h4 id="18-vlcmedialist-removemediaat-closes-182">18. <a href="https://github.com/videolan/vlckit/pull/34">VLCMediaList: removeMediaAt (closes #182)</a></h4>
+
+<p>This PR fixes a bug detected via HockeyApp crash reports from the production release of VLC-iOS. There were many ways this bug could have been fixed. However, all methods shared a common theme</p>
+
+<blockquote>
+  <p>An API shouldn’t crash due to a potentially inconsistent state.</p>
+</blockquote>
+
+<p>Think about this the next time you design your API.</p>
+
+<h4 id="19-tests-vlcmedialist">19. <a href="https://github.com/videolan/vlckit/pull/35">Tests: VLCMediaList</a></h4>
+
+<p>Table-driven tests for the win!</p>
+
+<h4 id="20-tests-vlcmediathumbnailer">20. <a href="https://github.com/videolan/vlckit/pull/37">Tests: VLCMediaThumbnailer</a></h4>
+
+<p>XCTest doing some major heavy lifting in this PR.</p>
+
+<h1 id="moving-forward">Moving forward</h1>
+
+<p>There are still some test code that has not been pushed to the repository. To ensure that these get merged into the repo, I plan on keep submitting PRs to VLCKit in hopes to achieve 100% code coverage!</p>
+
+<h2 id="you-have-just-finished-part-1-read-part-2-of-the-story-for-more-eye-opening-panic-inducing-blockbuster-action-in-the-world-of-ios">You have just finished part 1! Read <strong><a href="http://localhost:4000/2018/08/gsoc-2">PART 2</a></strong> of the story for more eye-opening, panic-inducing, blockbuster action in the world of iOS.</h2>
+
+
+    </div>
+  
+    <!-- Previous / Next Buttons -->
+    
+    
+
+    
+    
+
+    <div class="pagenav">
+		
+        <div class="wrapper" id="left">
+          <small><b>Previous</b> Jul 18, 2018</small>
+          <br>
+            <a class="no-hov" href="/2018/07/auto-generated-interfaces">&laquo; Xcode Auto Generated Interfaces</a>
+        </div>
+		
+		
+        <div class="wrapper" id="right">
+          <small>Aug 5, 2018 <b>Next</b></small>
+          <br>
+          <a class="no-hov" href="/2018/08/gsoc-2">Google Summer of Code Final Report Part 2 &raquo;</a>
+        </div>
+		
+		</div>
+
+		<!-- Disqus comments view -->
+		
+		<div class="post-disqus">
+				<section id="disqus_thread"></section>
+				<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+
+var disqus_config = function () {
+  this.page.url = 'http://localhost:4000/2018/08/gsoc';  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '/2018/08/gsoc'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://deadbeef-me.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+		</div>
+		
+</article>
+
+    </div>
+    <footer class="c-page__footer">
+    <p>&copy; Mike JS. Choi 2022</p>
+    <p><a href="https://twitter.com/bananamlkshake2">Twitter</a><span class="u-separate"></span><a href="https://github.com/mkchoi212">Github</a></p>
+</footer>
+
+</div>
+
+        </main>
+    
+    </body>
+</html>

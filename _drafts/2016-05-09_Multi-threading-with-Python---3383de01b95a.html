@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Multi-threading with Python??</title><meta name="description" content="Python has a bad rep for being slow. I think it’s not the language that is slow but the fact that the language is so easy to learn that…"><style>
+      * {
+        font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 50px;
+        margin-bottom: 17px;
+        color: #333;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.6;
+        margin: 30px 0 0 0;
+        margin-bottom: 18px;
+        margin-top: 33px;
+        color: #333;
+      }
+      h3 {
+        font-size: 30px;
+        margin: 10px 0 20px 0;
+        color: #333;
+      }
+      header {
+        width: 640px;
+        margin: auto;
+      }
+      section {
+        width: 640px;
+        margin: auto;
+      }
+      section p {
+        margin-bottom: 27px;
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      section img {
+        max-width: 640px;
+      }
+      footer {
+        padding: 0 20px;
+        margin: 50px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .aspectRatioPlaceholder {
+        max-width: auto !important;
+        max-height: auto !important;
+      }
+      .aspectRatioPlaceholder-fill {
+        padding-bottom: 0 !important;
+      }
+      header,
+      section[data-field=subtitle] {
+        display: none;
+      }
+      </style></head><body><article class="h-entry">
+<header>
+<h1 class="p-name">Multi-threading with Python??</h1>
+</header>
+<section data-field="subtitle" class="p-summary">
+Python has a bad rep for being slow. I think it’s not the language that is slow but the fact that the language is so easy to learn that…
+</section>
+<section data-field="body" class="e-content">
+<section name="5cc1" class="section section--body section--first"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h3 name="65cc" id="65cc" class="graf graf--h3 graf--leading graf--title">Multi-threading with Python??</h3></div><div class="section-inner sectionLayout--fullWidth"><figure name="482d" id="482d" class="graf graf--figure graf--layoutFillWidth graf-after--h3"><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill" style="padding-bottom: 66.60000000000001%;"></div><img class="graf-image" data-image-id="0*6zc98ggzQP8otXqj.jpg" data-width="1400" data-height="933" src="https://cdn-images-1.medium.com/max/2000/0*6zc98ggzQP8otXqj.jpg"></div><figcaption class="imageCaption">cred to pexels</figcaption></figure></div><div class="section-inner sectionLayout--insetColumn"><p name="215d" id="215d" class="graf graf--p graf-after--figure">Python has a bad rep for being slow. I think it’s not the language that is slow but the fact that the language is so easy to learn that people don’t utilize the tools that can make Python code run fast as they want it to. I can go on with the usual misconceptions people have with Python and the things they are doing wrong (mostly) but that’s an entirely other post.</p><p name="7016" id="7016" class="graf graf--p graf-after--p">Ok, so back to our main topic here; multi-threading.</p><p name="0d4c" id="0d4c" class="graf graf--p graf-after--p">I was first introduced to multi-threading with C’s pthread and that was great once I kinda got a grip on it. But let me tell you, that took awhile.</p><p name="de29" id="de29" class="graf graf--p graf-after--p">But, as usual, things in Python just are easier… But let me warn ya, this is not the fully fledged multi-threading you get with C. Go see the CPU activities of your computer with 100 Python threads running and you’ll see what I’m talking about; it’s kinda like Goroutines in Go lang.</p><p name="be76" id="be76" class="graf graf--p graf-after--p graf--trailing">If you read the pydocs for the <strong class="markup--strong markup--p-strong">threading </strong>library, you’ll find out that the library is designed based on Java’s multi-threading library. What does that have to do with this post? Nothing. I just wanted for you to know that lol</p></div></div></section><section name="4a2c" class="section section--body"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><p name="1bc0" id="1bc0" class="graf graf--p graf--leading">So, what is the most Pythonic way to go with multi-threading?</p><pre name="6237" id="6237" class="graf graf--pre graf-after--p">import Queue<br>import threading<br>import urllib2<br><br># called by each thread<br>def get_url(q, url):<br>    q.put(urllib2.urlopen(url).read())<br><br>urls = [&quot;http://google.com&quot;, &quot;http://yahoo.com&quot;]<br><br>q = Queue.Queue()<br><br>for u in urls:<br>    t = threading.Thread(target=get_url, args = (q,u))<br>    t.daemon = True<br>    t.start()<br><br>s = q.get()<br>print s</pre><p name="7bca" id="7bca" class="graf graf--p graf-after--pre">This is the good ‘ole threading code that you’ll find on most Python books/blogs/whatever you get your hands on. But, I don’t like the way it looks with the for-loop taking up so much of it and what is the thing with the <em class="markup--em markup--p-em">get()</em> and the <em class="markup--em markup--p-em">start()</em>?? We can do better than that.</p><pre name="08a3" id="08a3" class="graf graf--pre graf-after--p">from multiprocessing.dummy import Pool as ThreadPool <br>import urllib2</pre><pre name="6c93" id="6c93" class="graf graf--pre graf-after--pre">urls = [&quot;http://google.com&quot;, &quot;http://yahoo.com&quot;]<br>def get_url(url):<br>    urllib2.urlopen(url).read()</pre><pre name="7944" id="7944" class="graf graf--pre graf-after--pre">pool    = ThreadPool(4) <br>results = pool.map(get_url, theurls)</pre><pre name="b29d" id="b29d" class="graf graf--pre graf-after--pre">#close the pool and wait for the work to finish <br>pool.close() <br>pool.join()</pre><p name="fd74" id="fd74" class="graf graf--p graf-after--pre">That’s much better. With <strong class="markup--strong markup--p-strong"><em class="markup--em markup--p-em">map </em></strong>there, I feel like the trendy Functional Programmer that I think I am! Anyways, what does <em class="markup--em markup--p-em">map </em>actually do? If you didn’t already know, Python has a map function that is for Functional Programming but no one really uses it cause lambda’s don’t really go well with Python.</p><figure name="39c3" id="39c3" class="graf graf--figure graf-after--p"><div class="aspectRatioPlaceholder is-locked" style="max-width: 600px; max-height: 404px;"><div class="aspectRatioPlaceholder-fill" style="padding-bottom: 67.30000000000001%;"></div><img class="graf-image" data-image-id="0*vdJJvdQnlW18LNdn.jpg" data-width="600" data-height="404" src="https://cdn-images-1.medium.com/max/1600/0*vdJJvdQnlW18LNdn.jpg"></div></figure><p name="0134" id="0134" class="graf graf--p graf-after--figure graf--trailing">Basically, <strong class="markup--strong markup--p-strong"><em class="markup--em markup--p-em">map </em></strong>is a little function you can use to easily incorporate parallelism into your pre-existing Python code. Instead of you calling silly functions like <em class="markup--em markup--p-em">start(), lock(), stop(), getoffme(), pleaseno()</em> and god knows what other functions they have, you can let <strong class="markup--strong markup--p-strong"><em class="markup--em markup--p-em">map </em></strong>handle everything for you. It does all that by applying the function and storing the results in a list at the end!</p></div></div></section><section name="c05f" class="section section--body"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><p name="f389" id="f389" class="graf graf--p graf--leading">So there you go, I hope I broke one of your many misconceptions about Python; or maybe you knew all this already :)</p><p name="20da" id="20da" class="graf graf--p graf-after--p">On the side note, I’ve been doing a lot of Python lately so there may be more Python related posts in the future!</p><p name="ee03" id="ee03" class="graf graf--p graf-after--p graf--trailing">Deuces</p></div></div></section><section name="bf06" class="section section--body section--last"><div class="section-divider"><hr class="section-divider"></div><div class="section-content"><div class="section-inner sectionLayout--insetColumn"><h4 name="35bb" id="35bb" class="graf graf--h4 graf--leading">UPDATE 2016.08.10</h4><p name="5052" id="5052" class="graf graf--p graf-after--h4">I’ve been using the multiprocessing module for quite sometime now and came to a conclusion that all you need to know is this…</p><pre name="77c4" id="77c4" class="graf graf--pre graf-after--p">pool = multiprocessing.Pool(x_number_of_cpus)<br>pool.apply_async(your_function_here, args=(x,y,))<br>pool.close()<br>pool.join()</pre><p name="df3f" id="df3f" class="graf graf--p graf-after--pre">I mean in the end, I wasn’t doing anything that required a mutex or caused a deadlock so I settled with the asynchronous processing. If there comes a time where I need to improve on this, I will look up on it more.</p><p name="4d90" id="4d90" class="graf graf--p graf-after--p">But in the end, maybe if I’m that desperate for more processing power on Python, maybe I chose the wrong language in the first place…</p><p name="3423" id="3423" class="graf graf--p graf-after--p graf--trailing">Think about that…</p></div></div></section>
+</section>
+<footer><p class="p-tags">Tagged in <a href="https://medium.com/tag/python" class="p-tag">Python</a>, <a href="https://medium.com/tag/multithreading" class="p-tag">Multithreading</a>, <a href="https://medium.com/tag/multitasking" class="p-tag">Multitasking</a></p><p>By <a href="https://medium.com/@mikejschoi" class="p-author h-card">Mike JS Choi</a> on <a href="https://medium.com/p/3383de01b95a"><time class="dt-published" datetime="2016-05-09T13:39:56.979Z">May 9, 2016</time></a>.</p><p>Exported from <a href="https://medium.com">Medium</a> on June 28, 2017.</p></footer></article>
+
+</body></html>

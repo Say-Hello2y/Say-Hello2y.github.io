@@ -5,14 +5,12 @@
 /* Reset Modified from Normalize.css */
 
 /* Base Reset */
-
 * {
     margin: 0;
     padding: 0;
 }
 
 *, *:before, *:after { box-sizing: inherit; }
-
 
 html {
     min-height: 100%;
@@ -40,10 +38,6 @@ section {
     display: block;
 }
 
-header a {
-  padding: 5px 1px;
-}
-
 h1,
 h2,
 h3,
@@ -53,7 +47,6 @@ h6 {
     font-weight: 400;
     color: $c-base__02;
 }
-
 
 /* Media */
 audio, canvas, progress, video {
@@ -67,7 +60,6 @@ audio:not([controls]) {
 }
 
 /* Images */
-
 [hidden], template { display: none; }
 
 img {
@@ -89,7 +81,6 @@ svg {
 }
 
 /* Links */
-
 a {
     color: $c-accent__blue;
     background-color: transparent;
@@ -99,6 +90,7 @@ a {
     display: inline-block;
     padding: 0px 1px;
     transition: color ease 0.3s;
+    word-break: break-word;
     
     /* Hover animation effect for all buttons */
     &::after {
@@ -137,6 +129,7 @@ a.nav {
   padding: 10px 35px;  
   overflow:hidden;
 }
+
 a.nav:before {
     font-family: FontAwesome;
     content:"\f07a";
@@ -151,11 +144,9 @@ b, strong   { font-weight: bold; }
 i, em       { font-weight: italic; }
 
 /* Content */
-
 figure {
     margin: 0;
 }
-
 
 hr {
     margin-top: 2.5rem;
@@ -167,7 +158,6 @@ hr {
 }
 
 /* Code Blocks */
-
 pre { overflow: auto; }
 
 code, pre {
