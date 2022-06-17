@@ -1,7 +1,7 @@
 ---
 layout: content
-title: Projects
-permalink: /projects/
+title: RL
+permalink: /reinforcement_learning/
 ---
 
 - [VLCKit](https://github.com/videolan/vlckit) - libvlc bindings for OS X, iOS and tvOS in Objective-C (Google Summer of Code project)
