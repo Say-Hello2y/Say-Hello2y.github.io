@@ -1,16 +1,16 @@
 # Site settings
-title: "0xDEADBEEF"
+title: "Longx's Blog"
 description: > 
-    Hi, I'm Mike. Here, I mainly write about Swift, Go, and random computer musings.  
+    Hi, I'm Longx. Here, I mainly write about my academic life of AI.  
 
-author: Mike JS. Choi
-email: mkchoi212@icloud.com
+author: Longx
+email: longxhe@gmail.com
 baseurl: ""
-url: "https://www.deadbeef.me"
-twitter_username: bananamlkshake2
-github_username:  mkchoi212
-disqus_id: deadbeef-me
-google_analytics_id: UA-101802837-1
+url: "https://say-hello2y.github.io/"
+twitter_username: longx
+github_username:  Say-Hello2y
+disqus_id: None
+google_analytics_id: None
 
 # SEO
 gem:
@@ -19,9 +19,9 @@ gem:
 social:
   name: Mike JS. Choi
   links:
-    - https://github.com/mkchoi212
-    - https://twitter.com/bananamlkshake2
-    - https://www.linkedin.com/in/mikejschoi/
+    - https://github.com/Say-Hello2y
+    - https://twitter.com/longxiang_he
+    - https://say-hello2y.github.io/
 
 # Build settings
 include: [_pages]
