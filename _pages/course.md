@@ -1,6 +1,6 @@
 ---
 layout: content
-title: Course
+title: Courses
 permalink: /course/
 ---
 
