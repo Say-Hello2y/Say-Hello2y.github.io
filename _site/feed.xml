@@ -6,9 +6,95 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 18 Jun 2022 20:30:39 +0800</pubDate>
-    <lastBuildDate>Sat, 18 Jun 2022 20:30:39 +0800</lastBuildDate>
+    <pubDate>Thu, 30 Jun 2022 15:33:58 +0800</pubDate>
+    <lastBuildDate>Thu, 30 Jun 2022 15:33:58 +0800</lastBuildDate>
     <generator>Jekyll v3.6.3</generator>
+    
+      <item>
+        <title>实数</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/videolan/vlckit&quot;&gt;VLCKit&lt;/a&gt; - libvlc bindings for OS X, iOS and tvOS in Objective-C (Google Summer of Code project)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/xcperfect&quot;&gt;xcperfect&lt;/a&gt; - xccov formatter, written in Ruby&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/fac&quot;&gt;Fix All Conflicts&lt;/a&gt; - command-line interface for fixing git merge conflicts, written in Go&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/CircularCrownSelector&quot;&gt;CircularCrownSelector&lt;/a&gt; - Apple watchOS selection UI&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/LBAC-Swift&quot;&gt;LBaC-Swift&lt;/a&gt; - &lt;a href=&quot;https://compilers.iecc.com/crenshaw/&quot;&gt;Let’s Build a Compiler&lt;/a&gt; translated to Swift Playgrounds&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/bitbuf&quot;&gt;bitbuf&lt;/a&gt; - C API for creation and analysis of binary data&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/paper-jekyll-theme&quot;&gt;Paper&lt;/a&gt; - Jekyll theme used in my personal blog&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/mkchoi212.github.io&quot;&gt;This blog&lt;/a&gt; - Jekyll based blog deployed on Github Pages&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Maroon&quot;&gt;Maroon&lt;/a&gt; - iOS app for Texas A&amp;amp;M University students&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/today&quot;&gt;today&lt;/a&gt; - iOS app designed to simply your morning &lt;a href=&quot;https://www.deadbeef.me/2016/05/today-app&quot;&gt;(blog post)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Habitats&quot;&gt;Habitats&lt;/a&gt; - iOS app for Habitats for Humanity shack bidding charity event&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Wordsneak&quot;&gt;Word Sneak&lt;/a&gt; - iOS card game based on a segment from &lt;a href=&quot;https://www.youtube.com/watch?v=9nBBgD0q6rA&quot;&gt;Late Night with Jimmy Fallon&lt;/a&gt; &lt;a href=&quot;https://www.deadbeef.me/2016/02/word-sneak&quot;&gt;(blog post)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;hacks&quot;&gt;Hacks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/crowd_sense&quot;&gt;CrowdSense&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/muinmomin/vision&quot;&gt;Shovel&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://twitter.com/EEP_TAMU/status/932409691350724608&quot;&gt;🎉 1st place&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.thebatt.com/science-technology/teams-apply-virtual-perspectives-to-practical-problems/article_f6429522-cdb2-11e7-800b-e367e6d55617.html&quot;&gt;Cool school news article!&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;talks&quot;&gt;Talks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://iosdevkor.github.io/let_us_go_2017_summer_review/&quot;&gt;Let us go: 2017 Swift Conf @ Seoul, Korea&lt;/a&gt; - Limiting the use of protocols &lt;a href=&quot;https://www.deadbeef.me/2017/06/first-talk&quot;&gt;(blog post)&lt;/a&gt; &lt;a href=&quot;https://news.realm.io/kr/news/understanding-swift-protocol/&quot;&gt;(video)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 19 Jun 2022 05:49:23 +0800</pubDate>
+        <link>http://localhost:4000/2022/06/math_real</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/06/math_real</guid>
+        
+        <category>Real Number</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>数学概念</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/videolan/vlckit&quot;&gt;VLCKit&lt;/a&gt; - libvlc bindings for OS X, iOS and tvOS in Objective-C (Google Summer of Code project)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/xcperfect&quot;&gt;xcperfect&lt;/a&gt; - xccov formatter, written in Ruby&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/fac&quot;&gt;Fix All Conflicts&lt;/a&gt; - command-line interface for fixing git merge conflicts, written in Go&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/CircularCrownSelector&quot;&gt;CircularCrownSelector&lt;/a&gt; - Apple watchOS selection UI&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/LBAC-Swift&quot;&gt;LBaC-Swift&lt;/a&gt; - &lt;a href=&quot;https://compilers.iecc.com/crenshaw/&quot;&gt;Let’s Build a Compiler&lt;/a&gt; translated to Swift Playgrounds&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/bitbuf&quot;&gt;bitbuf&lt;/a&gt; - C API for creation and analysis of binary data&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/paper-jekyll-theme&quot;&gt;Paper&lt;/a&gt; - Jekyll theme used in my personal blog&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/mkchoi212.github.io&quot;&gt;This blog&lt;/a&gt; - Jekyll based blog deployed on Github Pages&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Maroon&quot;&gt;Maroon&lt;/a&gt; - iOS app for Texas A&amp;amp;M University students&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/today&quot;&gt;today&lt;/a&gt; - iOS app designed to simply your morning &lt;a href=&quot;https://www.deadbeef.me/2016/05/today-app&quot;&gt;(blog post)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Habitats&quot;&gt;Habitats&lt;/a&gt; - iOS app for Habitats for Humanity shack bidding charity event&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Wordsneak&quot;&gt;Word Sneak&lt;/a&gt; - iOS card game based on a segment from &lt;a href=&quot;https://www.youtube.com/watch?v=9nBBgD0q6rA&quot;&gt;Late Night with Jimmy Fallon&lt;/a&gt; &lt;a href=&quot;https://www.deadbeef.me/2016/02/word-sneak&quot;&gt;(blog post)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;hacks&quot;&gt;Hacks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/crowd_sense&quot;&gt;CrowdSense&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/muinmomin/vision&quot;&gt;Shovel&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://twitter.com/EEP_TAMU/status/932409691350724608&quot;&gt;🎉 1st place&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.thebatt.com/science-technology/teams-apply-virtual-perspectives-to-practical-problems/article_f6429522-cdb2-11e7-800b-e367e6d55617.html&quot;&gt;Cool school news article!&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;talks&quot;&gt;Talks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://iosdevkor.github.io/let_us_go_2017_summer_review/&quot;&gt;Let us go: 2017 Swift Conf @ Seoul, Korea&lt;/a&gt; - Limiting the use of protocols &lt;a href=&quot;https://www.deadbeef.me/2017/06/first-talk&quot;&gt;(blog post)&lt;/a&gt; &lt;a href=&quot;https://news.realm.io/kr/news/understanding-swift-protocol/&quot;&gt;(video)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 19 Jun 2022 05:49:23 +0800</pubDate>
+        <link>http://localhost:4000/2022/06/math_concept</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/06/math_concept</guid>
+        
+        <category>Pure math</category>
+        
+        
+      </item>
     
       <item>
         <title>Soft Actor Critic</title>
@@ -103,34 +189,12 @@
       <item>
         <title>RL Base</title>
         <description>&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/videolan/vlckit&quot;&gt;VLCKit&lt;/a&gt; - libvlc bindings for OS X, iOS and tvOS in Objective-C (Google Summer of Code project)&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/xcperfect&quot;&gt;xcperfect&lt;/a&gt; - xccov formatter, written in Ruby&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/fac&quot;&gt;Fix All Conflicts&lt;/a&gt; - command-line interface for fixing git merge conflicts, written in Go&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/CircularCrownSelector&quot;&gt;CircularCrownSelector&lt;/a&gt; - Apple watchOS selection UI&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/LBAC-Swift&quot;&gt;LBaC-Swift&lt;/a&gt; - &lt;a href=&quot;https://compilers.iecc.com/crenshaw/&quot;&gt;Let’s Build a Compiler&lt;/a&gt; translated to Swift Playgrounds&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/bitbuf&quot;&gt;bitbuf&lt;/a&gt; - C API for creation and analysis of binary data&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/paper-jekyll-theme&quot;&gt;Paper&lt;/a&gt; - Jekyll theme used in my personal blog&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/mkchoi212.github.io&quot;&gt;This blog&lt;/a&gt; - Jekyll based blog deployed on Github Pages&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Maroon&quot;&gt;Maroon&lt;/a&gt; - iOS app for Texas A&amp;amp;M University students&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/today&quot;&gt;today&lt;/a&gt; - iOS app designed to simply your morning &lt;a href=&quot;https://www.deadbeef.me/2016/05/today-app&quot;&gt;(blog post)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Habitats&quot;&gt;Habitats&lt;/a&gt; - iOS app for Habitats for Humanity shack bidding charity event&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/Wordsneak&quot;&gt;Word Sneak&lt;/a&gt; - iOS card game based on a segment from &lt;a href=&quot;https://www.youtube.com/watch?v=9nBBgD0q6rA&quot;&gt;Late Night with Jimmy Fallon&lt;/a&gt; &lt;a href=&quot;https://www.deadbeef.me/2016/02/word-sneak&quot;&gt;(blog post)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/521531331&quot;&gt;详见知乎连接’强化学习入门知识’&lt;/a&gt; - 主要介绍了关于自己学习强化学习的一些收获&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;hacks&quot;&gt;Hacks&lt;/h1&gt;
+&lt;h1 id=&quot;contact-me&quot;&gt;Contact me&lt;/h1&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mkchoi212/crowd_sense&quot;&gt;CrowdSense&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/muinmomin/vision&quot;&gt;Shovel&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://twitter.com/EEP_TAMU/status/932409691350724608&quot;&gt;🎉 1st place&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://www.thebatt.com/science-technology/teams-apply-virtual-perspectives-to-practical-problems/article_f6429522-cdb2-11e7-800b-e367e6d55617.html&quot;&gt;Cool school news article!&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;talks&quot;&gt;Talks&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://iosdevkor.github.io/let_us_go_2017_summer_review/&quot;&gt;Let us go: 2017 Swift Conf @ Seoul, Korea&lt;/a&gt; - Limiting the use of protocols &lt;a href=&quot;https://www.deadbeef.me/2017/06/first-talk&quot;&gt;(blog post)&lt;/a&gt; &lt;a href=&quot;https://news.realm.io/kr/news/understanding-swift-protocol/&quot;&gt;(video)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Want contact me ,my email is longxhe@gamil.com.&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
