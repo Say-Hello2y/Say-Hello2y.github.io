@@ -7,4 +7,5 @@ excerpt_separator: <!--more-->
 ---
 
 Common function.<!--more--> 
+
 {% include common_function.html %}
