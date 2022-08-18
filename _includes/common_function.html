@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="common-function">common function</h1>
+<h2 id="zip">zip</h2>
+<p>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的对象，这样做的好处是节约了不少的内存。</p>
+<pre><code>&gt;&gt;&gt; a = [1,2,3]
+&gt;&gt;&gt; b = [4,5,6]
+&gt;&gt;&gt; c = [4,5,6,7,8]
+&gt;&gt;&gt; zipped = zip(a,b)     # 返回一个对象
+&gt;&gt;&gt; zipped
+&lt;zip object at 0x103abc288&gt;
+&gt;&gt;&gt; list(zipped)  # list() 转换为列表
+[(1, 4), (2, 5), (3, 6)]
+&gt;&gt;&gt; list(zip(a,c))              # 元素个数与最短的列表一致
+[(1, 4), (2, 5), (3, 6)]
+
+&gt;&gt;&gt; a1, a2 = zip(*zip(a,b))          # 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式
+&gt;&gt;&gt; list(a1)
+[1, 2, 3]
+&gt;&gt;&gt; list(a2)
+[4, 5, 6]
+&gt;&gt;&gt;
+
+</code></pre>
+<h2 id="torch.repeat">torch.repeat()</h2>
+<pre><code>import torch
+ 
+x = torch.tensor([1,2,3])
+ 
+#将一维度的x扩展到三维
+xx = x.repeat(4,2,1)
+ 
+/**
+扩展步骤如下(倒着执行)：
+1  最后一个维度1：此时将[1,2,3]中的数字直接重复1次，得到[1,2,3]，保持没变
+2  倒数第二个维度2：先将上一步骤的结果增加一个维度，得到[[1,2,3]]，然后将最外层中括号中的整体重复2次，得到[[1,2,3],[1,2,3]]
+3  倒数第三个维度4：先将上一步骤的结果增加一个维度，得到[[[1,2,3],[1,2,3]]]，然后将最外层中括号中的整体重复4次，得到[[[1,2,3],[1,2,3]],[[1,2,3],[1,2,3]],[[1,2,3],[1,2,3]],[[1,2,3],[1,2,3]]]
+4  三个维度扩展结束，得到结果。
+ 
+**/
+</code></pre>
+<h2 id="矩阵乘法tflop计算">矩阵乘法tflop计算</h2>
+<pre><code># 矩阵乘法的TFLOPS
+import torch
+from torch.utils import benchmark
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+typ = torch.float16
+n = 1024 * 16
+a = torch.randn(n, n).type(typ).to(device)
+b = torch.randn(n, n).type(typ).cuda()
+
+t = benchmark.Timer(
+    stmt='a @ b',
+    globals={'a':a, 'b':b}
+)
+
+x = t.timeit(50)
+print(2*n**3 / x.median / 1e12) # 对于矩阵乘法而言两个n*n的矩阵相乘需要进行2*n^3个乘加操作
+</code></pre>
+<h2 id="torch.embedding">torch.Embedding</h2>
+<pre><code>nn.Embedding()
+A simple lookup table that stores embeddings of a fixed dictionary and size.
+Parameters:
+num_embeddings (int) – size of the dictionary of embeddings
+embedding_dim (int) – the size of each embedding vector
+
+Input : batch_size * sent_length
+while every element in the raw is an index(int, from 0 to voc_length-1) which stands for a vocabulary 
+nn.Embedding maps the input index to an embedding vector and works like a lookup table
+this layer's weight is a tensor of size voc_length*dmodel, each index stands for  a unique vocabulary 
+and have an embedding vector whose values equal Weight[index,:], so this layer is just like a lookup table
+</code></pre>
+<h2 id="python-round">python round()</h2>
+<p>The round() function returns a floating point number that is a rounded version of the specified number, with the specified number of decimals.<br>
+注：round有四舍五入取整的意思<br>
+The default number of decimals is 0, meaning that the function will return the nearest integer.</p>
+<pre><code>x = round(5.76543, 2)
+print(x)
+&gt;&gt;&gt; 5.77
+
+</code></pre>
+</div>
+</body>
+
+</html>
