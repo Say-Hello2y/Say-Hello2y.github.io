@@ -91,7 +91,8 @@ Defines an iterator that batches examples of similar lengths together.
 
 ```
 
-For more detailed information, please see [https://torchtext.readthedocs.io/en/latest/data.html#pipeline](https://torchtext.readthedocs.io/en/latest/data.html#pipeline)
+**For more detailed information, please see 
+[https://torchtextreadthedocs.io/en/latest/data.html#pipeline](https://torchtext.readthedocs.io/en/latest/data.html#pipeline).**
 
 ### spacy
 
@@ -1112,7 +1113,7 @@ def test_model(num_examples):
         batch_bleu = sum(batch_bleu) / len(batch_bleu)
         print('TOTAL BLEU SCORE = {}'.format(batch_bleu))
 ```
-Thanks for your reading, if you have any questions feel free to contact me, my email is longxhe@gmail.com.I'll really appreciate it if you have starred my Github project  [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer).
+Thanks for your reading, if you have any questions feel free to contact me, my email is longxhe@gmail.com.**I'll really appreciate it if you have starred my Github project  [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer).**
 ## REFERENCES
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. _Advances in neural information processing systems_, _30_.
 
