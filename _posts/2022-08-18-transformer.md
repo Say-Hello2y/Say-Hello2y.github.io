@@ -14,9 +14,29 @@ The transformer is a neural network architecture that is widely used in NLP and 
 
 ![The Transformer architecture](/assets/transformer/ModalNet-21.png "The Transformer architecture")
 
-Just like other encoder-decoder architecture ,the encoder maps an input sequence of symbol representations $(x_1, ..., x_n)$ to a sequence of continuous representations $\mathbf{z} = (z_1, ..., z_n)$. Given $\mathbf{z}$, the decoder then generates an output sequence $(y_1,...,y_m)$ of symbols one element at a time. At each step the model is auto-regressive , consuming the previously generated symbols as additional input when generating the next.
+Just like other encoder-decoder architecture ,the encoder maps an input sequence of symbol representations 
+$$
+(x_1, ..., x_n)
+$$
+ to a sequence of continuous representations 
+ $$
+ \mathbf{z} = (z_1, ..., z_n)
+ $$
+ . Given 
+ $$
+ \mathbf{z}
+ $$
+ , the decoder then generates an output sequence 
+ $$
+ (y_1,...,y_m)
+ $$
+of symbols one element at a time. At each step the model is auto-regressive , consuming the previously generated symbols as additional input when generating the next.
 
-As shown in the figure above, the Transformer is composed of N $\times$encoder-decoder blocks. Assumed the input sequences are English sentences and output is German sentences which means we use Transformer for machine translation. In this blog, I'll introduce how to code Transformer through the order of the data process.
+As shown in the figure above, the Transformer is composed of N 
+$$
+\times
+$$
+encoder-decoder blocks. Assumed the input sequences are English sentences and output is German sentences which means we use Transformer for machine translation. In this blog, I'll introduce how to code Transformer through the order of the data process.
 
 Now, let's recall the process of training our model, firstly we get the training dataset (src, trg), which means the input English sentence (src) and corresponding German translation (trg) and we often need to preprocess it, then we input the processed data to our model, to be precise, the src data is sent to the encoder, and trg data is sent to the decoder where we use masked attention to keep the auto-regressive property, select loss function and use SGD to optimize our model to get ideal parameters to minimize the loss function.
 ## Data preprocess
@@ -178,13 +198,18 @@ output:
 
 
 ## Input Embedding & Positional Embedding
-In machine translation, we often map each word to a word vector instead of one hot encoding. In Transformer, we map each word to a  vector of size $d_{model}=512$ and add positional information to the word vector,  **Vasmari et al** use these functions to create a constant of positional embedding:
+In machine translation, we often map each word to a word vector instead of one hot encoding. In Transformer, we map each word to a  vector of size 
+$$
+d_{model}=512
+$$ and add positional information to the word vector,  **Vasmari et al** use these functions to create a constant of positional embedding:
+
 $$
 \begin{align*}
     PE_{(pos,2i)} = sin(pos / 10000^{2i/d_{model}}) \\
     PE_{(pos,2i+1)} = cos(pos / 10000^{2i/d_{model}})
 \end{align*}
 $$
+
 As is shown above, we can easily realize positional embedding by an element-wise operator but if we want to realize Input Embedding we need the nn.Embedding.
 ### nn.Embedding
  ```
@@ -229,7 +254,9 @@ tensor([[-1.0889, -0.8173, -0.9053],
         [ 0.4828, -0.8169,  0.7782]], requires_grad=True)
 
 ```
+
 For more detail,see [https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html](https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html)
+
 ### Input Embedding & Positional Embedding code 
 ```
 import torch
@@ -326,9 +353,21 @@ class TransformerEmbedding(nn.Module):
 ## Multi-Head Attention(Masked opt) 
 
 ### Scaled Dot-Product Attention
-Attention in machine learning means we use an attention function to map a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors. The output is computed as a weighted sum of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key. In 'Attention is all you need ', the input consists of queries and keys of dimension $d_k$, and values of dimension $d_v$.  They compute the dot products of the query with all keys, divide each by $\sqrt{d_k}$, and apply a softmax function to obtain the weights on the values.
+Attention in machine learning means we use an attention function to map a query and a set of key-value pairs to an output, where the query, keys, values, and output are all vectors. The output is computed as a weighted sum of the values, where the weight assigned to each value is computed by a compatibility function of the query with the corresponding key. In 'Attention is all you need ', the input consists of queries and keys of dimension 
+$$
+d_k
+$$
+, and values of dimension 
+$$d_v
+$$
+.  They compute the dot products of the query with all keys, divide each by 
+$$
+\sqrt{d_k}
+$$
+, and apply a softmax function to obtain the weights on the values.
 
 ![](/assets/transformer/ModalNet-19.png)
+
 $$
 \begin{equation}
    \mathrm{Attention}(Q, K, V) = \mathrm{softmax}(\frac{QK^T}{\sqrt{d_k}})V
@@ -422,10 +461,26 @@ torch.Size([2, 3, 4])
 ### Multi-Head Attention
 In Transformer, to attend to information from different representation subspaces at different positions, we use Multi-Head Attention, which
 instead of performing a single attention function with 
-$d_{model}$-dimensional keys, values and queries, we  linearly project the queries, keys and values $h$ times with different, learned linear projections to $d_k$, $d_k$ and $d_v$ dimensions, respectively.
-On each of these projected versions of queries, keys, and values we then perform the attention function in parallel, yielding $d_v$-dimensional output values. These are concatenated and once again projected, resulting in the final values, as depicted in the Figure below.
+$$d_{model}$$-dimensional keys, values and queries, we  linearly project the queries, keys and values $h$ times with different, learned linear projections to $$
+d_k
+$$
+, 
+$$
+d_k
+$$ 
+and 
+$$
+d_v
+$$ 
+dimensions, respectively.
+On each of these projected versions of queries, keys, and values we then perform the attention function in parallel, yielding 
+$$
+d_v
+$$
+-dimensional output values. These are concatenated and once again projected, resulting in the final values, as depicted in the Figure below.
 
 ![multi-head-att](/assets/transformer/ModalNet-20.png)
+
 $$
 \begin{align*}
     \mathrm{MultiHead}(Q, K, V) &= \mathrm{Concat}(\mathrm{head_1}, ..., \mathrm{head_h})W^O\\
@@ -434,9 +489,25 @@ $$
 \end{align*}
 $$
 
-Where the projections are parameter matrices $W^Q_i \in \mathbb{R}^{d_{model} \times d_k}$, $W^K_i \in \mathbb{R}^{d_{model} \times d_k}$, $W^V_i \in \mathbb{R}^{d_{model} \times d_v}$ and $W^O \in \mathbb{R}^{hd_v \times d_{model}}$.
+Where the projections are parameter matrices $$
+W^Q_i \in \mathbb{R}^{d_{model} \times d_k}
+$$
+, 
+$$
+W^K_i \in \mathbb{R}^{d_{model} \times d_k}
+$$
+, 
+$$
+W^V_i \in \mathbb{R}^{d_{model} \times d_v}
+$$ and 
+$$
+W^O \in \mathbb{R}^{hd_v \times d_{model}}
+$$.
 
-In this work we employ $h=8$ parallel attention layers, or heads. For each of these we use $d_k=d_v=d_{model}/h=64$.
+In this work we employ $$h=8$$ parallel attention layers, or heads. For each of these we use 
+$$
+d_k=d_v=d_{model}/h=64
+$$.
 Due to the reduced dimension of each head, the total computational cost is similar to that of single-head attention with full dimensionality.
 
 Here is the code of Multi-Head Attention:
@@ -550,7 +621,9 @@ $$
    \mathrm{Attention}_{masked}(Q, K, V) = \mathrm{softmax}(\frac{QK^T+M}{\sqrt{d_k}})V
 \end{equation}
 $$
+
 where
+
 $$\begin{equation}
 M=[m_{ij}],m_{ij}==\left\{
 \begin{aligned}
@@ -560,11 +633,13 @@ M=[m_{ij}],m_{ij}==\left\{
 \right.
 \end{equation}
 $$
+
 $$
 Q_{sentence\_length,d_{k}}=\begin{bmatrix} q_1^T \\ \vdots \\ q_n^T\end{bmatrix}
 \quad
 K_{sentence\_length,d_{k}}=\begin{bmatrix} k_1^T \\ \vdots \\ k_n^T\end{bmatrix}
 $$
+
 In the encoder self-attention, we use the make_pad_mask to eliminate the effect of padding, in the decoder self-attention we use both make_pad_mask and make_no_peak_mask to eliminate the effect of padding and keep the auto-regressive property, in the encoder-decoder we only use make_pad_mask the eliminate the effect of padding.
 
 Here is the code of make_pad_mask and make_no_peak_mask :
@@ -599,26 +674,49 @@ Here is the code of make_pad_mask and make_no_peak_mask :
 
 
 ## Residual Connection & Layer Norm
-In each sublayer, The Transformer also employs a residual connection to facilitate constructing a deeper network, followed by layer normalization to facilitate training.That is, the output of each sub-layer is $\mathrm{LayerNorm}(x + \mathrm{Sublayer}(x))$, where $\mathrm{Sublayer}(x)$ is the function implemented by the sub-layer itself which could be Attention Layer or point-wise feedforward network.  To facilitate these residual connections, all sub-layers in the Transformer, as well as the embedding layers, produce outputs of dimension $d_{model}=512$.
+In each sublayer, The Transformer also employs a residual connection to facilitate constructing a deeper network, followed by layer normalization to facilitate training.That is, the output of each sub-layer is $$
+\mathrm{LayerNorm}(x + \mathrm{Sublayer}(x))
+$$
+, where 
+$$
+\mathrm{Sublayer}(x)
+$$ is the function implemented by the sub-layer itself which could be Attention Layer or point-wise feedforward network.  To facilitate these residual connections, all sub-layers in the Transformer, as well as the embedding layers, produce outputs of dimension 
+$$
+d_{model}=512
+$$.
 
 As for layer normalization ,we can compare it with batch normalization .
 
 Batch Normalization aims to reduce internal covariate shift, and in doing so aims to accelerate the training of deep neural nets. It accomplishes this via a normalization step that fixes the means and variances of layer inputs. Batch Normalization also has a beneficial effect on the gradient flow through the network, by reducing the dependence of gradients on the scale of the parameters or of their initial values. This allows for use of much higher learning rates without the risk of divergence. Furthermore, batch normalization regularizes the model and reduces the need for Dropout.
 
-We apply a batch normalization layer as follows for a minibatch $\mathcal{B}$
+We apply a batch normalization layer as follows for a minibatch $$\mathcal{B}$$
+
 $$
  \mu_{\mathcal{B}} = \frac{1}{m}\sum^{m}_{i=1}x_{i} 
 $$
+
 $$
   \sigma^{2}_{\mathcal{B}} = \frac{1}{m}\sum^{m}_{i=1}\left(x_{i}-\mu_{\mathcal{B}}\right)^{2} 
 $$
+
 $$
  \hat{x}_{i} = \frac{x_{i} - \mu_{\mathcal{B}}}{\sqrt{\sigma^{2}_{\mathcal{B}}+\epsilon}} 
 $$
+
 $$
   y_{i} = \gamma\hat{x}_{i} + \beta = \text{BN}_{\gamma, \beta}\left(x_{i}\right) 
 $$
-Where $\gamma$ and $\beta$ are learnable parameters.But for batch normalization, when we evaluate our model, we input a test data but a test data is hard to say it's mean and variance, and if you think the mean of a test data is itself and variance is zero, there will be another big question the $\hat{x_i}=0$ according to the formula above.
+
+Where 
+$$
+\gamma
+$$ and 
+$$
+\beta
+$$ are learnable parameters.But for batch normalization, when we evaluate our model, we input a test data but a test data is hard to say it's mean and variance, and if you think the mean of a test data is itself and variance is zero, there will be another big question the 
+$$
+\hat{x_i}=0
+$$ according to the formula above.
 So when we use batch normalization, we need to store the means and variances of training batch data, which could introduce the dependencies
 to training data.
 
@@ -627,13 +725,22 @@ to training data.
 Unlike batch normalization, Layer Normalization directly estimates the normalization statistics from the summed inputs to the neurons within a hidden layer so the normalization does not introduce any new dependencies between training cases. It works well for RNNs and improves both the training time and the generalization performance of several existing RNN models. More recently, it has been used with Transformer models.
 
 We compute the layer normalization statistics over all the hidden units in the same layer as follows:
+
 $$
 \mu^{l} = \frac{1}{H}\sum^{H}_{i=1}a_{i}^{l}
 $$
+
 $$
 \sigma^{l} = \sqrt{\frac{1}{H}\sum^{H}_{i=1}\left(a_{i}^{l}-\mu^{l}\right)^{2}}
 $$
-where $H$ denotes the number of hidden units in a layer. Under layer normalization, all the hidden units in a layer share the same normalization terms $\mu$ and $\theta$, but different training cases have different normalization terms. Unlike batch normalization, layer normalization does not impose any constraint on the size of the mini-batch and it can be used in the pure online regime with batch size 1.
+
+where $$
+H
+$$ denotes the number of hidden units in a layer. Under layer normalization, all the hidden units in a layer share the same normalization terms $$
+\mu
+$$ and $$
+\theta
+$$, but different training cases have different normalization terms. Unlike batch normalization, layer normalization does not impose any constraint on the size of the mini-batch and it can be used in the pure online regime with batch size 1.
 You can think layer normalization is aimed at each layer's output instead of batch data itself.
 
 Here is the code of layer normalization. As for the residual connection, it can be easily implemented through the nn. forward, so I don't put an independent code on it.
