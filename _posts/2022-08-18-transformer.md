@@ -11,7 +11,7 @@ excerpt_separator: <!--more-->
 
 # Implementation of Transformer using PyTorch (detailed explanations）
 ## The Transformer
-The transformer is a neural network architecture that is widely used in NLP and CV. There are a lot of good blogs about it but most of them use a lot of PyTorch functions and common python packages and they assume that you have known about this knowledge so it is usually hard for the novice to fully understand these blogs. Instead, This blog will introduce how to code your Transformer from scratch, and I'll also introduce the PyTorch functions and python packages which are an essential part of coding Transformer.**The code of this bolg can be found in [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer)**
+The transformer is a neural network architecture that is widely used in NLP and CV. There are a lot of good blogs about it but most of them use a lot of PyTorch functions and common python packages and they assume that you have known about this knowledge so it is usually hard for the novice to fully understand these blogs. Instead, This blog will introduce how to code your Transformer from scratch, and I'll also introduce the PyTorch functions and python packages which are an essential part of coding Transformer.**The code of this blog can be found at [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer)**
 
 ![The Transformer architecture](/assets/transformer/ModalNet-21.png "The Transformer architecture")
 
