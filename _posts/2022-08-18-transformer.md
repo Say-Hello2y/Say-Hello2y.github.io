@@ -40,7 +40,11 @@ encoder-decoder blocks. Assumed the input sequences are English sentences and ou
 
 Now, let's recall the process of training our model, firstly we get the training dataset (src, trg), which means the input English sentence (src) and corresponding German translation (trg) and we often need to preprocess it, then we input the processed data to our model, to be precise, the src data is sent to the encoder, and trg data is sent to the decoder where we use masked attention to keep the auto-regressive property, select loss function and use SGD to optimize our model to get ideal parameters to minimize the loss function.
 ## Data preprocess
-In the training loop, we need to preprocess our source data and convert it to  batch_size$\times$sentence_length  tensor, each row in the input tensor stands for a sentence, each element in the row stands for a word that is expressed by an index, and we often pad the sentence to a fixed length for better training our model.In practice, we also add an init_token <sos> and an eos_token <eos> .This process can be finished by torchtext & spacy, both of them are python packages for NLP. 
+In the training loop, we need to preprocess our source data and convert it to  batch_size
+$$
+\times
+$$
+sentence_length  tensor, each row in the input tensor stands for a sentence, each element in the row stands for a word that is expressed by an index, and we often pad the sentence to a fixed length for better training our model.In practice, we also add an init_token <sos> and an eos_token <eos> .This process can be finished by torchtext & spacy, both of them are python packages for NLP. 
 
 ### Torchtext
 
@@ -78,9 +82,12 @@ Variables:
 - stop_words – Tokens to discard during the preprocessing step. Default: None
 - is_target – Whether this field is a target variable. Affects iteration over batches. Default: False
 #### torchtext.data.BucketIterator
+
 ```
 class torchtext.data.BucketIterator(dataset, batch_size, sort_key=None, device=None, batch_size_fn=None, train=True, repeat=False, shuffle=None, sort=None, sort_within_batch=None)
+
 ```
+
 Defines an iterator that batches examples of similar lengths together.
 
 For more detailed information, please see[https://torchtext.readthedocs.io/en/latest/data.html#pipeline](https://torchtext.readthedocs.io/en/latest/data.html#pipeline)
@@ -461,7 +468,7 @@ torch.Size([2, 3, 4])
 ### Multi-Head Attention
 In Transformer, to attend to information from different representation subspaces at different positions, we use Multi-Head Attention, which
 instead of performing a single attention function with 
-$$d_{model}$$-dimensional keys, values and queries, we  linearly project the queries, keys and values $h$ times with different, learned linear projections to $$
+$$d_{model}$$-dimensional keys, values and queries, we  linearly project the queries, keys and values $$h$$ times with different, learned linear projections to $$
 d_k
 $$
 , 
@@ -933,7 +940,7 @@ class Decoder(nn.Module):
 ```
 
 ## The Transformer(Code)
-The Transformer is composed of a stack of $N=6$ identical encoder-decoder blocks.
+The Transformer is composed of a stack of $$N=6$$ identical encoder-decoder blocks.
 
 Here is the code of the Transformer.
 ```
