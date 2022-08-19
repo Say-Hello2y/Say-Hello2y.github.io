@@ -3,6 +3,7 @@ layout: post
 title: "Implementation of Transformer using PyTorch (detailed explanations )"
 author: "longx.he"
 tags: Tutorial
+sticky: true
 excerpt_separator: <!--more-->
 ---
 
@@ -86,11 +87,11 @@ Variables:
 ```
 class torchtext.data.BucketIterator(dataset, batch_size, sort_key=None, device=None, batch_size_fn=None, train=True, repeat=False, shuffle=None, sort=None, sort_within_batch=None)
 
-```
-
 Defines an iterator that batches examples of similar lengths together.
 
-For more detailed information, please see[https://torchtext.readthedocs.io/en/latest/data.html#pipeline](https://torchtext.readthedocs.io/en/latest/data.html#pipeline)
+```
+
+For more detailed information, please see [https://torchtext.readthedocs.io/en/latest/data.html#pipeline](https://torchtext.readthedocs.io/en/latest/data.html#pipeline)
 
 ### spacy
 
