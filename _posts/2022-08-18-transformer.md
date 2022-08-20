@@ -403,7 +403,7 @@ class ScaleDotProductAttention(nn.Module):
         super(ScaleDotProductAttention, self).__init__()
         self.softmax = nn.Softmax(dim=-1)
 
-    def forward(self, q, k, v, mask=None, e=1e-12):
+    def forward(self, q, k, v, mask=None, e=1e12):
         # input is 4 dimension tensor
         # [batch_size, head, length, d_tensor]
         batch_size, head, length, d_tensor = k.size()
@@ -648,6 +648,8 @@ Q_{sentence\_length,d_{k}}=\begin{bmatrix} q_1^T \\ \vdots \\ q_n^T\end{bmatrix}
 \quad
 K_{sentence\_length,d_{k}}=\begin{bmatrix} k_1^T \\ \vdots \\ k_n^T\end{bmatrix}
 $$
+
+So if we want to mask future position, we only need to create a lower triangular matrix in which upper triangular elements are zero, then through the torch.masked_fill() we can let upper triangular elements to a very small negative number, eg -1e12.
 
 In the encoder self-attention, we use the make_pad_mask to eliminate the effect of padding, in the decoder self-attention we use both make_pad_mask and make_no_peak_mask to eliminate the effect of padding and keep the auto-regressive property, in the encoder-decoder we only use make_pad_mask the eliminate the effect of padding.
 
