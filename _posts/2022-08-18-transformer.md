@@ -45,7 +45,7 @@ In the training loop, we need to preprocess our source data and convert it to  b
 $$
 \times
 $$
-sentence_length  tensor, each row in the input tensor stands for a sentence, each element in the row stands for a word that is expressed by an index, and we often pad the sentence to a fixed length for better training our model.In practice, we also add an init_token <sos> and an eos_token <eos> .This process can be finished by torchtext & spacy, both of them are python packages for NLP. 
+sentence_length  tensor, each row in the input tensor stands for a sentence, each element in the row stands for a word that is expressed by a token, and we often pad the sentence to a fixed length for better training our model.In practice, we also add an init_token <sos> and an eos_token <eos> .This process can be finished by torchtext & spacy, both of them are python packages for NLP. 
 
 ### Torchtext
 
@@ -724,7 +724,7 @@ $$
 $$ and 
 $$
 \beta
-$$ are learnable parameters.But for batch normalization, when we evaluate our model, we input a test data but a test data is hard to say it's mean and variance, and if you think the mean of a test data is itself and variance is zero, there will be another big question the 
+$$ are learnable parameters.But for batch normalization, when we evaluate our model, we input a test smaple but a test sample is hard to say it's mean and variance, and if you think the mean of a test sample is itself and variance is zero, there will be another big question the 
 $$
 \hat{x_i}=0
 $$ according to the formula above.
@@ -1115,7 +1115,7 @@ def test_model(num_examples):
         batch_bleu = sum(batch_bleu) / len(batch_bleu)
         print('TOTAL BLEU SCORE = {}'.format(batch_bleu))
 ```
-Thanks for your reading, if you have any questions feel free to contact me, my email is longxhe@gmail.com.**I'll really appreciate it if you have starred my Github project  [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer).**
+Thanks for your reading, if you have any questions feel free to contact me, my email is longxhe@gmail.com.**I'll really appreciate it if you could star my Github project  [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer).**
 ## REFERENCES
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. _Advances in neural information processing systems_, _30_.
 
