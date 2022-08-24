@@ -539,7 +539,7 @@ class ScaleDotProductAttention(nn.Module):
         super(ScaleDotProductAttention, self).__init__()
         self.softmax = nn.Softmax(dim=-1)
 
-    def forward(self, q, k, v, mask=None, e=1e-12):
+    def forward(self, q, k, v, mask=None, e=1e12):
         # input is 4 dimension tensor
         # [batch_size, head, length, d_tensor]
         batch_size, head, length, d_tensor = k.size()
@@ -814,8 +814,6 @@ putting all of it together. But there is another great detail in training, which
 Here is the code of encoder & decoder.
 ```
 # encoder
-class EncoderLayer(nn.Module):
-
     def __init__(self, d_model, ffn_hidden, n_head, drop_prob):
         super(EncoderLayer, self).__init__()
         self.attention = MultiHeadAttention(d_model=d_model, n_head=n_head)
@@ -830,18 +828,19 @@ class EncoderLayer(nn.Module):
         # 1. compute self attention
         _x = x
         x = self.attention(q=x, k=x, v=x, mask=s_mask)
-        
+        x = self.dropout1(x)
         # 2. add and norm
         x = self.norm1(x + _x)
-        x = self.dropout1(x)
+        
         
         # 3. positionwise feed forward network
         _x = x
         x = self.ffn(x)
+        x = self.dropout2(x)
       
         # 4. add and norm
         x = self.norm2(x + _x)
-        x = self.dropout2(x)
+        
         return x
 
 class Encoder(nn.Module):
@@ -913,6 +912,7 @@ class DecoderLayer(nn.Module):
         x = self.norm3(x + _x)
         x = self.dropout3(x)
         return x
+
 
 class Decoder(nn.Module):
     def __init__(self, dec_voc_size, max_len, d_model, ffn_hidden, n_head, n_layers, drop_prob, device):
@@ -1082,7 +1082,7 @@ Here is the code to test our model, which uses the bleu measure.
 ```
 def test_model(num_examples):
     iterator = test_iter
-    model.load_state_dict(torch.load("./saved/model-saved.pt"))
+    model.load_state_dict(torch.load("./saved/transformer-100.pt"))
 
     with torch.no_grad():
         batch_bleu = []
@@ -1114,7 +1114,59 @@ def test_model(num_examples):
 
         batch_bleu = sum(batch_bleu) / len(batch_bleu)
         print('TOTAL BLEU SCORE = {}'.format(batch_bleu))
+
 ```
+### Test Result
+
+```
+source : an oriental person in a red shirt and black pants crouching over a purse on concrete .
+target : eine person orientalischen in einem roten shirt und schwarzer hose hockt über einer handtasche auf dem beton .
+predicted : ein frau in in einen einem und ein und auf ein . einem .
+
+BLEU SCORE = 19.018777246233505
+source : a small boy wearing baseball holds a bat behind his head with a baseball mounted in front of him .
+target : ein kleiner junge in holt mit einem schläger hinter seinem kopf in richtung eines vor ihm baseballs aus .
+predicted : ein junge junge in einem und eine einem und einem und einem und einem . . . einem . .
+
+source : two male curling players are on ice sweeping the path in front of rock , a small crowd watches .
+target : zwei männliche sind auf dem eis und wischen den pfad vor dem stein , während eine kleine menschenmenge zusieht .
+predicted : zwei männer männer in auf einem und ein und auf einem . während ein . . . .
+
+source : woman wearing brown sandals and blue jeans , in a white shirt , holding a baby under a tall tree .
+target : eine frau in braunen sandalen , blauen jeans und einem weißen shirt hält ein baby unter einem großen baum .
+predicted : ein frau in einem hemd und die hemd und ein hemd und auf und einem . . . .
+
+source : a young child wearing an orange life vest holding an oar paddling a blue kayak in a body of water .
+target : ein kleines kind in einer orangefarbenen rettungsweste hält ein und paddelt in einem blauen kajak auf einem gewässer .
+predicted : ein mann mädchen in einem roten hemd und auf und eine auf einem . einem . . . .
+
+source : five people walking up a set of stairs led by a woman in a pink shirt and brown skirt .
+target : fünf personen , von einer frau in einem pinken hemd und braunen rock , gehen eine treppe hoch .
+predicted : drei gruppe in die und einem und einem , ein , während auf . . . . .
+
+source : a man dressed in boots and a cowboy hat sits atop a horse that is jumping while spectators sit in the stands .
+target : ein mann in stiefeln und einem cowboyhut sitzt auf einem springenden pferd während zuschauer auf den tribünen sitzen .
+predicted : ein mann in einem und eine und auf einem mann und ein und einem . auf . . . .
+
+source : a young girl with curly blond - hair and wearing a white top lies in the grass , holding a flower stem .
+target : ein junges mädchen mit blonden haaren in einem weißen top liegt im gras und hält einen .
+predicted : ein mann mädchen in einem und hemd und einem hemd und auf und eine auf . . . . .
+
+source : a family is walking on the sidewalk through the snow while a man sits on the side with his paper cup .
+target : eine familie geht auf dem gehsteig durch den schnee während am rand ein mann mit seinem sitzt .
+predicted : ein frau in auf einem und ein und ein und und einem . auf . . . .
+
+source : a child in a red coat waves a hand in the air while lying in snow beside a red plastic sled .
+target : ein kind in einer roten jacke winkt mit einer hand während es neben einem im schnee liegt .
+predicted : ein mann in einem blauen hemd und auf einem und ein und einem und . auf . . . .
+
+source : four men , three of whom are wearing prayer caps , are sitting on a blue and olive green patterned mat .
+target : vier männer , drei von ihnen mit , sitzen auf einer blau und gemusterten matte .
+predicted : zwei männer in die einem und einem und die auf einem und ein , . . . . . .
+
+
+```
+
 Thanks for your reading, if you have any questions feel free to contact me, my email is longxhe@gmail.com.**I'll really appreciate it if you could star my Github project  [https://github.com/Say-Hello2y/transformer](https://github.com/Say-Hello2y/transformer).**
 ## REFERENCES
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł. and Polosukhin, I., 2017. Attention is all you need. _Advances in neural information processing systems_, _30_.
