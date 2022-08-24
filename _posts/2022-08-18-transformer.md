@@ -890,28 +890,32 @@ class DecoderLayer(nn.Module):
         # 1. compute self attention
         _x = dec
         x = self.self_attention(q=dec, k=dec, v=dec, mask=t_mask)
-        
+
+        x = self.dropout1(x)
         # 2. add and norm
         x = self.norm1(x + _x)
-        x = self.dropout1(x)
+        
 
         if enc is not None:
             # 3. compute encoder - decoder attention
             _x = x
             x = self.enc_dec_attention(q=x, k=enc, v=enc, mask=s_mask)
-            
+
+            x = self.dropout2(x)
             # 4. add and norm
             x = self.norm2(x + _x)
-            x = self.dropout2(x)
+
 
         # 5. positionwise feed forward network
         _x = x
         x = self.ffn(x)
-        
+
+        x = self.dropout3(x)
         # 6. add and norm
         x = self.norm3(x + _x)
-        x = self.dropout3(x)
+
         return x
+
 
 
 class Decoder(nn.Module):
